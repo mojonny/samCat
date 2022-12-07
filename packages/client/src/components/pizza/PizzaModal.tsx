@@ -49,7 +49,7 @@ interface PizzaModalProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PizzaModal = ({ selectedPizza, setSelectedPizza, open, setOpen }: PizzaModalProps): JSX.Element => {
+const PizzaModal = ({ selectedPizza, open, setOpen }: PizzaModalProps): JSX.Element => {
   const classes = useStyles();
 
   const { onCreatePizza, onDeletePizza, onUpdatePizza } = usePizzaMutations();

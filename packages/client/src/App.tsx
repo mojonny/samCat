@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './components/Home';
 import Nav from './components/Nav';
@@ -9,11 +9,11 @@ const App = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Nav />
-      <Switch>
-        <Route path="/pizzas" component={Pizzas} exact />
-        <Route path="/toppings" component={Toppings} exact />
-        <Route path="/" component={Home} exact />
-      </Switch>
+      <Routes>
+        <Route path="/pizzas" element={<Pizzas />} />
+        <Route path="/toppings" element={<Toppings />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
     </BrowserRouter>
   );
 };

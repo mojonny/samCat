@@ -1,4 +1,4 @@
-import { screen, waitFor, render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { graphql } from 'msw';
 import { renderWithProviders } from '../../../lib/test/renderWithProviders';
 import { server } from '../../../lib/test/msw-server';
@@ -6,20 +6,20 @@ import { createTestPizza } from '../../../lib/test/helper/pizza';
 import Pizzas from '../Pizzas';
 import { Pizza } from '../../../types';
 
-describe('PizzaList', () => {
+describe('Pizzas', () => {
   const renderPizzaList = () => {
     const view = renderWithProviders(<Pizzas />);
 
     return {
       ...view,
-      $findPizzaItems: () => screen.findAllByTestId(/^pizza-item-/),
+      $findPizzaItems: () => screen.findAllByTestId('{`pizza-item-${pizza?.id}`}'),
       $findPizzaItemsButtons: () => screen.findAllByRole('button'),
     };
   };
 
   const mockPizzasQuery = (data: Partial<Pizza[]>) => {
     server.use(
-      graphql.query('GetPizzas', (_request, response, context) => {
+      graphql.query('Pizzas', (_request, response, context) => {
         return response(
           context.data({
             loading: false,
@@ -39,16 +39,6 @@ describe('PizzaList', () => {
   test('should display a list of pizzas', async () => {
     const { $findPizzaItems } = renderPizzaList();
 
-    await waitFor(async () => {
-      expect(await $findPizzaItems()).toHaveLength(2);
-    });
-  });
-
-  test('to see if loading works', async () => {
-    render(<Pizzas />);
-
-    await waitFor(() => {
-      expect(screen.queryByTestId('pizza-list-loading')).toBeVisible();
-    });
+    expect(await $findPizzaItems()).toHaveLength(2);
   });
 });

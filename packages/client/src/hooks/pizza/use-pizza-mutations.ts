@@ -15,9 +15,9 @@ interface UsePizzaMutationsOutput {
 }
 
 const usePizzaMutations = (): UsePizzaMutationsOutput => {
-  const [createPizza] = useMutation(CREATE_PIZZA, { refetchQueries: [GET_PIZZAS, 'GetPizzas'] });
-  const [deletePizza] = useMutation(DELETE_PIZZA, { refetchQueries: [GET_PIZZAS, 'GetPizzas'] });
-  const [updatePizza] = useMutation(UPDATE_PIZZA, { refetchQueries: [GET_PIZZAS, 'GetPizzas'] });
+  const [createPizza] = useMutation(CREATE_PIZZA, { refetchQueries: [GET_PIZZAS, 'Pizzas'] });
+  const [deletePizza] = useMutation(DELETE_PIZZA, { refetchQueries: [GET_PIZZAS, 'Pizzas'] });
+  const [updatePizza] = useMutation(UPDATE_PIZZA, { refetchQueries: [GET_PIZZAS, 'Pizzas'] });
 
   const onCreatePizza = useCallback(
     (selectedPizza) => {

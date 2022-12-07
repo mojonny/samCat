@@ -3,7 +3,7 @@ import { PizzaDocument, toPizzaObject } from '../../../entities/pizza';
 import { Pizza, CreatePizzaInput, UpdatePizzaInput } from '../../providers/pizza/pizza.provider.types';
 import validateStringInputs from '../../../lib/string-validator';
 import { ToppingProvider } from '../toppings/topping.provider';
-import { toppingProvider } from '..';
+//import { toppingProvider } from '..';
 
 class PizzaProvider {
   constructor(private collection: Collection<PizzaDocument>, private toppingProvider: ToppingProvider) {}
@@ -21,7 +21,7 @@ class PizzaProvider {
     if (name) validateStringInputs(name);
     if (toppingIds) validateStringInputs(toppingIds);
 
-    toppingProvider.validateToppings(toppingIds);
+    //toppingProvider.validateToppings(toppingIds);
 
     const data = await this.collection.findOneAndUpdate(
       { _id: new ObjectId() },

@@ -17,7 +17,7 @@ describe('PizzaItem', () => {
       $getPrice: () => screen.getByTestId(/^pizza-price/),
       $getToppings: () => screen.getByTestId(/^pizza-toppings/),
       $getImage: () => screen.getByRole('img'),
-      $getModifyButton: () => screen.getByRole('button'),
+      $getModifyButton: () => screen.getByTestId('mod-button'),
     };
   };
 
@@ -34,13 +34,13 @@ describe('PizzaItem', () => {
     expect($getDescription()).toBeVisible();
     expect($getToppings()).toBeVisible();
     expect($getPrice()).toBeVisible();
-    expect($getModifyButton()).toContain('Create or Edit Pizza!');
+    expect($getModifyButton()).toBeVisible();
   });
 
   test('should call handleOpen when the modify button is clicked', async () => {
     const { $getModifyButton } = renderPizzaList(props);
 
-    act(() => userEvent.click($getModifyButton()));
+    await act(async () => userEvent.click($getModifyButton()));
 
     expect(props.handleOpen).toHaveBeenCalledTimes(1);
   });

@@ -4,7 +4,7 @@ import { Pizza } from '../../../types/schema';
 
 export const createTestPizza = (data: Partial<Pizza> = {}): Pizza => ({
   __typename: 'Pizza',
-  id: new ObjectId().toHexString(),
+  id: new ObjectId(),
   name: 'Cheese',
   priceCents: 3_50,
   description: 'Simple',

@@ -1,7 +1,5 @@
-import CardItem from '../common/CardItem';
 import { Pizza } from '../../types';
 import toDollars from '../../lib/format-dollars';
-
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -14,9 +12,9 @@ export interface PizzaItemProps {
   handleOpen: (pizza?: Pizza) => void;
 }
 
-const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) => {
+const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen }) => {
   return (
-    <CardItem {...props}>
+    <PizzaItem data-testid={`pizza-item-${pizza?.id}`} key={pizza?.id} handleOpen={handleOpen} pizza={pizza}>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia
@@ -24,6 +22,7 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) =>
             image={pizza?.imgSrc}
             src="https://img5.goodfon.com/original/2500x1280/e/f1/minimalizm-stil-fon-art-art-style-background-illustration--4.jpg"
             component="div"
+            data-testid={`pizza-image-${pizza?.id}`}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" data-testid={`pizza-name-${pizza?.id}`}>
@@ -48,6 +47,7 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) =>
             type="button"
             size="small"
             color="primary"
+            data-testid="mod-button"
             onClick={(): void => handleOpen(pizza)}
           >
             Create or Edit Pizza!
@@ -55,7 +55,7 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) =>
           </IconButton>
         </CardActions>
       </Card>
-    </CardItem>
+    </PizzaItem>
   );
 };
 

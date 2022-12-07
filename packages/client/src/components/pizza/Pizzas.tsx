@@ -28,13 +28,18 @@ const Pizzas: React.FC = () => {
     return <div>`Error! ${error.message}`</div>;
   }
 
+  const PizzaList = data?.pizzas.map((pizza: Pizza) => (
+    <PizzaItem data-testid={`pizza-item-${pizza?.id}`} key={pizza.id} handleOpen={handleOpen} pizza={pizza} />
+  ));
+  console.log(PizzaList);
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <PageHeader pageHeader={'Pizzas'} />
-        <PizzaItem key="Create-pizza?" handleOpen={handleOpen} />
+        <PizzaItem handleOpen={handleOpen} />
 
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key="container">
           {Array.from(
             data?.pizzas.map((pizza: Pizza) => (
               <Grid item xs={4} sm={4} md={4}>
@@ -55,8 +60,3 @@ const Pizzas: React.FC = () => {
 };
 
 export default Pizzas;
-
-/* const PizzaList = data?.pizzas.map((pizza: Pizza) => (
-    <PizzaItem data-testid={`pizza-item-${pizza?.id}`} key={pizza.id} handleOpen={handleOpen} pizza={pizza} />
-  ));
-  console.log(PizzaList);*/

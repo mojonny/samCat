@@ -91,7 +91,13 @@ describe('pizzaProvider', (): void => {
     });
   });
   describe('updatePizza', (): void => {
-    const validPizza = createMockPizzaDocument({ name: 'test pizza', priceCents: 12345 });
+    const validPizza = createMockPizzaDocument({
+      name: 'test Pizza',
+      description: 'E-Z-CHEESE-E',
+      imgSrc:
+        'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80',
+      toppingIds: ['564f0184537878b57efcb703', 'a10d50e732a0b1d4f2c5e506'],
+    });
 
     beforeEach(() => {
       reveal(stubPizzaCollection).findOneAndUpdate.mockImplementation(() => ({ value: validPizza }));
