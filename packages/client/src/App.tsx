@@ -10,9 +10,9 @@ const App = (): JSX.Element => {
     <BrowserRouter>
       <Nav />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/pizzas" element={<Pizzas />} />
         <Route path="/toppings" element={<Toppings />} />
-        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
