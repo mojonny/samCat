@@ -26,7 +26,7 @@ const CardItem = ({ children, onClick, rootClassName, ...props }: CardItemProps)
 
   return (
     <Card {...props} className={`${classes.root} ${rootClassName}`} onClick={onClick}>
-      {children!}
+      <>{children!}</>
     </Card>
   );
 };

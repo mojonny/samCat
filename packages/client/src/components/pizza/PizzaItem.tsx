@@ -12,6 +12,7 @@ import CardItem from '../common/CardItem';
 export interface PizzaItemProps {
   pizza?: Pizza;
   handleOpen: (pizza?: Pizza) => void;
+  key?: string;
 }
 
 const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) => {
