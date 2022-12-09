@@ -10,6 +10,7 @@ import { AddCircle, Edit } from '@material-ui/icons';
 export interface PizzaItemProps {
   pizza?: Pizza;
   handleOpen: (pizza?: Pizza) => void;
+  key?: string;
 }
 
 const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen }) => {

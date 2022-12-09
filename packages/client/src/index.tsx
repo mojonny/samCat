@@ -4,8 +4,6 @@ import { Providers } from './Providers';
 
 require('dotenv').config();
 
-console.log(process.env);
-
 ReactDOM.render(
   <Providers>
     <App />

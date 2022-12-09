@@ -1,6 +1,6 @@
 import { IconButton, ListItem, Theme } from '@material-ui/core';
 import { AddCircle, Edit } from '@material-ui/icons';
-import makeStyles from '@material-ui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 import toDollars from '../../lib/format-dollars';
 import { Topping } from '../../types';

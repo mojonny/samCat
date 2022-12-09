@@ -35,7 +35,7 @@ const Pizzas: React.FC = () => {
 
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} key="box">
         <PageHeader pageHeader={'Pizzas'} />
         <PizzaItem handleOpen={handleOpen} />
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client/react/hooks';
-import makeStyles from '@material-ui/styles/makeStyles';
+import { makeStyles } from '@mui/styles';
 import { Container, createStyles, List, ListItem, Theme } from '@material-ui/core';
 
 import { Topping } from '../../types';
