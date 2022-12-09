@@ -6,8 +6,9 @@ import PizzaItem from './PizzaItem';
 import CardItemSkeleton from '../common/CardItemSkeleton';
 import PizzaModal from './PizzaModal';
 import PageHeader from '../common/PageHeader';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+//import Box from '@mui/material/Box';
+//import Grid from '@mui/material/Grid';
+import { Container } from '@material-ui/core';
 
 const Pizzas: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -34,14 +35,24 @@ const Pizzas: React.FC = () => {
   console.log(PizzaList);
 
   return (
-    <div>
+    <Container maxWidth="md">
+      <PageHeader pageHeader={'Pizzas'} />
+      <PizzaItem key="Create-pizza?" handleOpen={handleOpen} />
+      {PizzaList}
+      <PizzaModal selectedPizza={selectedPizza} open={open} setOpen={setOpen} />
+    </Container>
+  );
+};
+
+export default Pizzas;
+
+/*
+  <div>
       <Box sx={{ flexGrow: 1 }}>
         <PageHeader pageHeader={'Pizzas'} />
-        <PizzaItem handleOpen={handleOpen} />
-
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key="container">
-          {Array.from(
-            data?.pizzas.map((pizza: Pizza) => (
+          <PizzaItem handleOpen={handleOpen} />
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+              {Array.from(data?.pizzas.map((pizza: Pizza) => (
               <Grid item xs={4} sm={4} md={4}>
                 <PizzaItem
                   data-testid={`pizza-item-${pizza?.id}`}
@@ -56,7 +67,5 @@ const Pizzas: React.FC = () => {
         <PizzaModal selectedPizza={selectedPizza} open={open} setOpen={setOpen} />
       </Box>
     </div>
-  );
-};
 
-export default Pizzas;
+    */
