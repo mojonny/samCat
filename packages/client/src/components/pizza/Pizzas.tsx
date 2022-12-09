@@ -67,5 +67,5 @@ export default Pizzas;
         <PizzaModal selectedPizza={selectedPizza} open={open} setOpen={setOpen} />
       </Box>
     </div>
-
+Save this for later when I want to clean things up!
     */
