@@ -11,6 +11,7 @@
     "dotenv": "^16.0.3",
     "gql": "^1.1.2",
     "graphql": "^15.8.0",
+    "latest-version": "^7.0.0",
     "nodemon": "^2.0.20",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
