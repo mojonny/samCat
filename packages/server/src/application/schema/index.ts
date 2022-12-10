@@ -14,4 +14,4 @@ const typeDefs = gql`
 `;
 
 export { typeDefs };
-//git config --unset core.hooksPath
+//git config --unset core.hooksPath j
