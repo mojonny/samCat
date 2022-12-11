@@ -1,14 +1,10 @@
 databases:
   - name: db # Render PG14
-    databaseName: dbName
+    databaseName: db
     user: dbuser
-    postgresMajorVersion: bitnami/mongodb:4.4
+    bitnami/mongodbMajorVersion: 4
 
 services:
-  - type: mongodb # Render Redis
-    name: samcat
-    ipAllowList: ['27017:27017']
-
   - type: web
     name: ws
     env: docker
