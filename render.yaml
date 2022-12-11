@@ -2,15 +2,28 @@ services:
   - type: web
     name: ws
     env: docker
-    dockerfilePath: ./docker-compose.yml
+    startCommand: 'docker-compose up'
+    dockerfilePath: ./Dockerfile.bitnami
     envVars:
       - key: ALLOW_EMPTY_PASSWORD
-        value: 'yes'
+        value: yes
       - key: MONGODB_ADVERTISED_HOSTNAME
-        value: localhost
+        value: '0.0.0.0'
       - key: MONGODB_REPLICA_SET_MODE
-        value: 'primary'
+        value: primary
       - key: MONGODB_REPLICA_SET_NAME
         value: replicaset
       - key: MONGODB_EXTRA_FLAGS
         value: --bind_ip_all
+
+  - type: web
+    name: mongodb
+    env: express
+    buildCommand: npm run seed:database
+    startCommand: npm start
+    envVars:
+      - key: MONGO_CONNECTION_STRING
+        fromService:
+          type: mongodb
+          name: samuraiPizzaCats
+          property: connectionString
