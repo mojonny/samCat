@@ -61,7 +61,8 @@
     "format:check": "prettier --check \"**/*.{ts,js,json,graphql,gql,yaml,yml,md}\"",
     "prepare": "husky install",
     "build": "npm run build",
-    "test": "cd packages/server && npm run test && cd ../client && npm run test --watchAll"
+    "test": "cd packages/server && npm run test && cd ../client && npm run test --watchAll",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
