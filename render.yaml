@@ -1,8 +1,7 @@
 databases:
-  - name: db # Render PG14
-    databaseName: db
-    user: dbuser
-    mongodbMajorVersion: 4
+  - name: db
+    databaseName: dbName
+    user: dbName
 
 services:
   - type: web
