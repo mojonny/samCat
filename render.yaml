@@ -2,7 +2,7 @@ databases:
   - name: db # Render PG14
     databaseName: db
     user: dbuser
-    bitnami/mongodbMajorVersion: 4
+    mongodbMajorVersion: 4
 
 services:
   - type: web
