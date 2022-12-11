@@ -1,14 +1,26 @@
-version: '3.1'
+databases:
+  - name: db # Render PG14
+    databaseName: dbName
+    user: dbuser
+    postgresMajorVersion: bitnami/mongodb:4.4
 
 services:
-  mongodb:
-    image: 'bitnami/mongodb:4.4'
-    container_name: samcat
-    ports:
-      - '27017:27017'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MONGODB_ADVERTISED_HOSTNAME=localhost
-      - MONGODB_REPLICA_SET_MODE=primary
-      - MONGODB_REPLICA_SET_NAME=replicaset
-      - MONGODB_EXTRA_FLAGS=--bind_ip_all
+  - type: mongodb # Render Redis
+    name: samcat
+    ipAllowList: ['27017:27017']
+
+  - type: web
+    name: ws
+    env: docker
+    dockerfilePath: ./docker-compose.yml
+    envVars:
+      - key: ALLOW_EMPTY_PASSWORD
+        value: 'yes'
+      - key: MONGODB_ADVERTISED_HOSTNAME
+        value: localhost
+      - key: MONGODB_REPLICA_SET_MODE
+        value: 'primary'
+      - key: MONGODB_REPLICA_SET_NAME
+        value: replicaset
+      - key: MONGODB_EXTRA_FLAGS
+        value: --bind_ip_all
