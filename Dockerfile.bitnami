@@ -1,2 +1,0 @@
-FROM bitnami/mongodb:4.4
-ENV MONGODB_ADVERTISED_HOSTNAME=localhost:27017
