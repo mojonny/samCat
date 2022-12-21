@@ -38,10 +38,10 @@ const Pizzas: React.FC = () => {
       <Box sx={{ flexGrow: 1 }} key="box">
         <PageHeader pageHeader={'Pizzas'} />
         <PizzaItem handleOpen={handleOpen} />
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key={PizzaItem}>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key="Grid">
           {Array.from(
             data?.pizzas.map((pizza: Pizza) => (
-              <Grid item xs={4} sm={4} md={4} key={PizzaItem}>
+              <Grid item xs={4} sm={4} md={4} key="Grid">
                 <PizzaItem
                   data-testid={`pizza-item-${pizza?.id}`}
                   key={pizza.id}
