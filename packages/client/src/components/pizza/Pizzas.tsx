@@ -7,8 +7,6 @@ import PizzaModal from './PizzaModal';
 import PageHeader from '../common/PageHeader';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { ThemeProvider } from '@mui/system';
-import { theme } from '../../theme/theme';
 
 const Pizzas: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -36,16 +34,14 @@ const Pizzas: React.FC = () => {
   ));
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ flexGrow: 1 }} key="box">
-        <PageHeader pageHeader={'Pizzas'} />
-        <PizzaItem handleOpen={handleOpen} />
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key="Grid">
-          {Array.from(`${pizzaList}`)}
-        </Grid>
-        <PizzaModal selectedPizza={selectedPizza} open={open} setOpen={setOpen} />
-      </Box>
-    </ThemeProvider>
+    <Box sx={{ flexGrow: 1 }} key="box">
+      <PageHeader pageHeader={'Pizzas'} />
+      <PizzaItem handleOpen={handleOpen} />
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key="Grid">
+        {Array.from(`${pizzaList}`)}
+      </Grid>
+      <PizzaModal selectedPizza={selectedPizza} open={open} setOpen={setOpen} />
+    </Box>
   );
 };
 
