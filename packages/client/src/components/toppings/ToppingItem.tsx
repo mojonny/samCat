@@ -1,23 +1,8 @@
-import { IconButton, ListItem, Theme } from '@material-ui/core';
+import { IconButton, ListItem } from '@material-ui/core';
 import { AddCircle, Edit } from '@material-ui/icons';
-import makeStyles from '@mui/styles/makeStyles';
 
 import toDollars from '../../lib/format-dollars';
 import { Topping } from '../../types';
-
-const useStyles = makeStyles(({ typography }: Theme) => ({
-  container: {
-    display: 'flex',
-  },
-  name: {
-    minWidth: typography.pxToRem(500),
-  },
-  right: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-}));
 
 export interface ToppingItemProps {
   topping?: Topping;
@@ -25,14 +10,10 @@ export interface ToppingItemProps {
 }
 
 const ToppingItem: React.FC<ToppingItemProps> = ({ topping, handleOpen, ...props }) => {
-  const classes = useStyles();
-
   return (
-    <ListItem {...props} className={classes.container}>
-      <p data-testid={`topping-name-${topping?.id}`} className={classes.name}>
-        {topping?.name ?? 'Add topping'}
-      </p>
-      <div className={classes.right}>
+    <ListItem {...props}>
+      <p data-testid={`topping-name-${topping?.id}`}>{topping?.name ?? 'Add topping'}</p>
+      <div>
         <p data-testid={`topping-price-${topping?.id}`}>{topping?.priceCents ? toDollars(topping.priceCents) : ''}</p>
         <IconButton edge="end" aria-label="modify" type="button" onClick={(): void => handleOpen(topping)}>
           {topping ? <Edit /> : <AddCircle />}

@@ -35,6 +35,7 @@ const Toppings: React.FC = () => {
   return (
     <Box
       sx={{
+        display: 'flex',
         bgcolor: 'background.paper',
         boxShadow: 1,
         borderRadius: 1,
