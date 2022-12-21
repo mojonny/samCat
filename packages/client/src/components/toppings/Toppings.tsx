@@ -7,6 +7,7 @@ import { GET_TOPPINGS } from '../../hooks/graphql/topping/queries/get-toppings';
 import PageHeader from '../common/PageHeader';
 import ToppingModal from './ToppingModal';
 import ToppingItem from './ToppingItem';
+import { theme } from '../../theme/theme';
 
 const Toppings: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -35,26 +36,45 @@ const Toppings: React.FC = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
         bgcolor: 'background.paper',
         boxShadow: 1,
         borderRadius: 1,
         p: 2,
-        minWidth: 300,
+        minWidth: 400,
       }}
     >
       <PageHeader pageHeader={'Toppings'} />
-      <ul>
-        <li>
-          <h2>Topping</h2>
-          <div>
-            <h2>Price</h2>
-            <h2>Modify</h2>
-          </div>
-        </li>
-        <ToppingItem key="add-topping" handleOpen={handleOpen} />
-        {toppingList}
-      </ul>
+
+      <Box sx={{ display: 'flex' }}>
+        <Box
+          sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium', minWidth: theme.typography.pxToRem(375) }}
+        >
+          Topping
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'space-between',
+            minWidth: theme.typography.pxToRem(260),
+          }}
+        >
+          Price
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'space-between',
+            minWidth: theme.typography.pxToRem(500),
+          }}
+        >
+          Modify
+        </Box>
+      </Box>
+
+      <ToppingItem key="add-topping" handleOpen={handleOpen} />
+      {toppingList}
 
       <ToppingModal
         selectedTopping={selectedTopping}
