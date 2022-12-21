@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { merge } from 'lodash/fp';
 import { toppingResolver } from './topping.resolver';
 import { pizzaResolver } from './pizza.resolver';
 

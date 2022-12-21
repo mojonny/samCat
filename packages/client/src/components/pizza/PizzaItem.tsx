@@ -19,7 +19,6 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen }) => {
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia
-            height="200"
             image={pizza?.imgSrc}
             src="https://img5.goodfon.com/original/2500x1280/e/f1/minimalizm-stil-fon-art-art-style-background-illustration--4.jpg"
             component="div"
