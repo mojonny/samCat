@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions, IconButton } from '@mui/material';
+import { CardActionArea, CardActions, IconButton, ListItem } from '@mui/material';
 import { AddCircle, Edit } from '@material-ui/icons';
 export interface PizzaItemProps {
   pizza?: Pizza;
@@ -13,20 +13,16 @@ export interface PizzaItemProps {
   key?: string;
 }
 
-const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen }) => {
+const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) => {
   return (
-    <PizzaItem data-testid={`pizza-item-${pizza?.id}`} key={pizza?.id} handleOpen={handleOpen} pizza={pizza}>
+    <ListItem {...props}>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          <CardMedia
-            image={pizza?.imgSrc}
-            src="https://img5.goodfon.com/original/2500x1280/e/f1/minimalizm-stil-fon-art-art-style-background-illustration--4.jpg"
-            component="div"
-            data-testid={`pizza-image-${pizza?.id}`}
-          />
           <CardContent>
+            <CardMedia component="img" height="194" image={pizza?.imgSrc} data-testid={`pizza-image-${pizza?.id}`} />
+
             <Typography gutterBottom variant="h5" component="div" data-testid={`pizza-name-${pizza?.id}`}>
-              {pizza?.name}
+              {pizza?.name == undefined && <h2>Create your own pizza?</h2>}
             </Typography>
             <Typography variant="body2" color="text.secondary" data-testid={`pizza-description-${pizza?.id}`}>
               {pizza?.description}
@@ -40,23 +36,15 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen }) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <IconButton
-            key="modify"
-            edge="end"
-            aria-label="modify"
-            type="button"
-            size="small"
-            color="primary"
-            data-testid="mod-button"
-            onClick={(): void => handleOpen(pizza)}
-          >
-            Create or Edit Pizza!
+          <IconButton aria-label="modify" type="button" onClick={(): void => handleOpen(pizza)}>
             {pizza ? <Edit /> : <AddCircle />}
           </IconButton>
         </CardActions>
       </Card>
-    </PizzaItem>
+    </ListItem>
   );
 };
 
 export default PizzaItem;
+
+//"https://img5.goodfon.com/original/2500x1280/e/f1/minimalizm-stil-fon-art-art-style-background-illustration--4.jpg"

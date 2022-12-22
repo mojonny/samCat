@@ -27,18 +27,18 @@ const Pizzas: React.FC = () => {
     return <div>`Error! ${error.message}`</div>;
   }
 
-  const pizzaList = data?.pizzas.map((pizza: Pizza) => (
-    <Grid item xs={4} sm={4} md={4} key="Grid">
-      <PizzaItem data-testid={`pizza-item-${pizza?.id}`} key={pizza.id} handleOpen={handleOpen} pizza={pizza} />
-    </Grid>
-  ));
-
   return (
-    <Box sx={{ flexGrow: 1 }} key="box">
+    <Box sx={{ flexGrow: 1 }}>
       <PageHeader pageHeader={'Pizzas'} />
-      <PizzaItem handleOpen={handleOpen} />
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key="Grid">
-        {Array.from(`${pizzaList}`)}
+      <PizzaItem key="add-pizza" handleOpen={handleOpen} />
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        {Array.from(
+          data?.pizzas.map((pizza: Pizza) => (
+            <Grid item xs={4} sm={4} md={4}>
+              <PizzaItem data-testid={`pizza-item-${pizza?.id}`} key={pizza.id} handleOpen={handleOpen} pizza={pizza} />
+            </Grid>
+          ))
+        )}
       </Grid>
       <PizzaModal selectedPizza={selectedPizza} open={open} setOpen={setOpen} />
     </Box>
