@@ -76,7 +76,7 @@
     "start": "concurrently \"cd packages/client && npm run start\" \"cd packages/server && npm run start\"",
     "server:dev": "cd packages/server && npm start",
     "client:dev": "cd packages/client && npm start",
-    "generate:types": "cd packages/server && npm run generate:types",
+    "generate:types": "npm run generate:types",
     "seed:database": "npm run seed:database",
     "lint": "eslint \"**/*.{ts,js}\" --cache --fix",
     "format": "prettier --write \"**/*.{ts,js,json,graphql,gql,yaml,yml,md}\"",
