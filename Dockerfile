@@ -1,13 +1,20 @@
 FROM node:16.13.0
-ENV NODE_ENV=production
-WORKDIR /
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Bundle app source
+COPY . /usr/src/app
+
+# Install app dependencies
 RUN npm install -g npm@9.2.0
 RUN npm install husky -g
 RUN npm install concurrently -g
 
 COPY . .
 EXPOSE 3000
-RUN chown -R node /
+
 USER node
 CMD ["npm", "start"]
