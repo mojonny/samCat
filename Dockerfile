@@ -11,9 +11,8 @@ COPY . /usr/src/app
 # Install app dependencies
 RUN npm install -g npm@9.2.0
 RUN npm install husky -g
-RUN npm install concurrently -g
+RUN npm run install:all
 
-COPY . .
 EXPOSE 3000
 
 USER node
