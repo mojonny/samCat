@@ -1,13 +1,18 @@
 # Stage 1
-FROM node:14 as build-stage
-
-WORKDIR /packages/client/
-COPY package.json .
-RUN npm install
+FROM node:14
+ENV NODE_ENV=production
+WORKDIR /packages/server/
+COPY ["package.json", "package-lock.json*", "./"]
+RUN npm install --production
 COPY . .
 
-ARG REACT_APP_API_BASE_URL
-ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
+# Stage 2
+WORKDIR /packages/client/
+COPY ./package.json ./package.json
+COPY ./public ./public
+COPY ./src ./src
+RUN npm install
+EXPOSE 3000
+CMD ["npm","start"]
 
-RUN npm run build
 
