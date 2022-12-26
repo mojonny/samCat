@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "nodemon src/application/server.ts",
+    "build": "nodemon src/application/server.ts",
     "seed:database": "ts-node scripts/seed-database.ts",
     "generate:types": "graphql-codegen",
     "test": "NODE_ENV=test TZ=UTC jest"
