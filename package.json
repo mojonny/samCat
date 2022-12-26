@@ -83,7 +83,7 @@
     "format": "prettier --write \"**/*.{ts,js,json,graphql,gql,yaml,yml,md}\"",
     "format:check": "prettier --check \"**/*.{ts,js,json,graphql,gql,yaml,yml,md}\"",
     "prepare": "husky install",
-    "build": "cd packages/client && npm run build",
+    "build": "concurrently \"cd packages/client && npm run build\" \"cd packages/server && npm run seed:database\"",
     "test": "cd packages/server && npm run test && cd ../client && npm run test --watchAll"
   },
   "lint-staged": {
