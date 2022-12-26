@@ -21,8 +21,8 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza, handleOpen, ...props }) =>
           <CardContent>
             <CardMedia component="img" height="194" image={pizza?.imgSrc} data-testid={`pizza-image-${pizza?.id}`} />
 
-            <Typography gutterBottom variant="h5" component="div" data-testid={`pizza-name-${pizza?.id}`}>
-              {pizza?.name == undefined /*&& <h2>Create your own pizza?</h2>*/}
+            <Typography variant="h5" color="text.primary" data-testid={`pizza-name-${pizza?.id}`}>
+              {pizza?.name == undefined && <h2>Create your own pizza?</h2>}
             </Typography>
             <Typography variant="body2" color="text.secondary" data-testid={`pizza-description-${pizza?.id}`}>
               {pizza?.description}
