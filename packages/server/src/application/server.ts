@@ -16,4 +16,4 @@ const createApp = async (): Promise<void> => {
   console.log(`Server running at http://localhost:${PORT}${server.graphqlPath}`);
 };
 
-createApp();
+createApp(); //Not sure if this file needs changing.
