@@ -1,4 +1,4 @@
-import { Db, MongoClient, Document } from 'mongodb';
+import { Db, MongoClient, Document } from 'mongodb-legacy';
 require('dotenv').config();
 
 const setupDb = (): Db => {
@@ -16,7 +16,7 @@ const setupDb = (): Db => {
     return client.db(dbName);
   } catch (error) {
     console.log(error);
-
+    console.warn('Database is not ready yet. Skipping seeding...');
     throw error;
   }
 };
