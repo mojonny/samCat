@@ -14,7 +14,7 @@ const setupDb = (): Db => {
     return client.db(dbName);
   } catch (error) {
     console.log(error);
-    console.warn('Database is not ready yet. Skipping seeding...');
+    console.warn('Database is not ready yet. Skipping seeding........');
     throw error;
   }
 };
