@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb-legacy';
 import { SeedPizza, toppings, pizzas, SeedTopping } from './initial-data';
 
 require('dotenv').config();

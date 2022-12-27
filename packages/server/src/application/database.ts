@@ -1,4 +1,4 @@
-import { Db, MongoClient, Document } from 'mongodb-legacy';
+import { Db, MongoClient, Document } from 'mongodb';
 require('dotenv').config();
 
 const setupDb = (): Db => {
@@ -9,10 +9,8 @@ const setupDb = (): Db => {
   const client = new MongoClient(uri);
 
   try {
-    client.connect(() => {
-      console.log(`MongoDb connected to ${dbName}`);
-    });
-
+    client.connect();
+    console.log(`MongoDb connected to ${dbName}`);
     return client.db(dbName);
   } catch (error) {
     console.log(error);
